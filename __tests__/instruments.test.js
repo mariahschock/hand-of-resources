@@ -52,6 +52,14 @@ describe('backend-express-template routes', () => {
     expect(res.body.difficulty).toBe('Super Easy');
   });
 
+  it('DELETE /instruments/:id should delete an instrument', async () => {
+    const res = await request(app).delete('/instruments/3');
+    expect(res.status).toBe(200);
+
+    const instrumentRes = await request(app).get('/instruments/3');
+    expect(instrumentRes.status).toBe(404);
+  });
+
   afterAll(() => {
     pool.end();
   });
