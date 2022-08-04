@@ -30,6 +30,20 @@ describe('backend-express-template routes', () => {
     });
   });
 
+  it('POST - /instruments should create a new instrument', async () => {
+    const newInstrument = {
+      instrument_name: 'French Horn',
+      category: 'Brass',
+      difficulty: 'Very Hard',
+    };
+    const res = await request(app).post('/instruments').send(newInstrument);
+    expect(res.status).toBe(200);
+    expect(res.body).toEqual({
+      id: expect.any(String),
+      ...newInstrument,
+    });
+  });
+
   afterAll(() => {
     pool.end();
   });
