@@ -44,6 +44,14 @@ describe('backend-express-template routes', () => {
     });
   });
 
+  it('PUT /instruments/:id should update an existing instrument', async () => {
+    const res = await request(app).put('/instruments/4').send({
+      difficulty: 'Super Easy',
+    });
+    expect(res.status).toBe(200);
+    expect(res.body.difficulty).toBe('Super Easy');
+  });
+
   afterAll(() => {
     pool.end();
   });
