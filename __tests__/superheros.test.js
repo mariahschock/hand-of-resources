@@ -52,6 +52,14 @@ describe('backend-express-template routes', () => {
     expect(res.body.name).toBe('Spiderman');
   });
 
+  it('DELETE /superheros/:id should delete a superhero', async () => {
+    const res = await request(app).delete('/superheros/4');
+    expect(res.status).toBe(200);
+
+    const superheroRes = await request(app).get('/superheros/4');
+    expect(superheroRes.status).toBe(404);
+  });
+
   afterAll(() => {
     pool.end();
   });
