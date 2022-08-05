@@ -30,6 +30,20 @@ describe('backend-express-template routes', () => {
     });
   });
 
+  it('POST - /fruits should create a new fruit', async () => {
+    const newFruit = {
+      name: 'Plum',
+      color: 'purple',
+      goes_on_pizza: false,
+    };
+    const res = await request(app).post('/fruits').send(newFruit);
+    expect(res.status).toBe(200);
+    expect(res.body).toEqual({
+      id: expect.any(String),
+      ...newFruit,
+    });
+  });
+
   afterAll(() => {
     pool.end();
   });
