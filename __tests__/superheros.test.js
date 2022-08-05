@@ -44,6 +44,14 @@ describe('backend-express-template routes', () => {
     });
   });
 
+  it('PUT - /superheros/:id should update an existing superhero', async () => {
+    const res = await request(app).put('/superheros/1').send({
+      name: 'Spiderman',
+    });
+    expect(res.status).toBe(200);
+    expect(res.body.name).toBe('Spiderman');
+  });
+
   afterAll(() => {
     pool.end();
   });
