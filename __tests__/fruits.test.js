@@ -52,6 +52,14 @@ describe('backend-express-template routes', () => {
     expect(res.body.goes_on_pizza).toBe(false);
   });
 
+  it('DELETE - /fruits/:id should delete fruit', async () => {
+    const res = await request(app).delete('/fruits/1');
+    expect(res.status).toBe(200);
+
+    const fruitRes = await request(app).get('/fruits/1');
+    expect(fruitRes.status).toBe(404);
+  });
+
   afterAll(() => {
     pool.end();
   });
