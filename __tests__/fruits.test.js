@@ -44,6 +44,14 @@ describe('backend-express-template routes', () => {
     });
   });
 
+  it('PUT - /fruits/:id should update an existing fruit', async () => {
+    const res = await request(app).put('/fruits/4').send({
+      goes_on_pizza: false,
+    });
+    expect(res.status).toBe(200);
+    expect(res.body.goes_on_pizza).toBe(false);
+  });
+
   afterAll(() => {
     pool.end();
   });
