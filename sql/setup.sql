@@ -3,6 +3,7 @@
 DROP TABLE IF EXISTS instruments;
 DROP TABLE IF EXISTS animals;
 DROP TABLE IF EXISTS movies;
+DROP TABLE IF EXISTS fruits;
 
 CREATE TABLE instruments (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -23,6 +24,13 @@ CREATE TABLE movies (
     title VARCHAR NOT NULL,
     director VARCHAR NOT NULL,
     year INT
+);
+
+CREATE TABLE fruits (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    name VARCHAR NOT NULL,
+    color VARCHAR NOT NULL,
+    goes_on_pizza BOOLEAN
 );
 
 INSERT INTO instruments (
@@ -57,3 +65,14 @@ VALUES
   ('Wedding Crashers', 'David Dobkin', 2005),
   ('The Holiday', 'Nancy Meyers', 2006),
   ('School of Rock', 'Richard Linklater', 2003);
+
+  INSERT INTO fruits (
+    name,
+    color,
+    goes_on_pizza
+  )  
+VALUES
+  ('Orange', 'orange', 'false'),
+  ('Tomato', 'red', 'true'),
+  ('Kiwi', 'green', 'false'),
+  ('Pineapple,', 'yellow', 'true');
