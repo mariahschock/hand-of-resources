@@ -30,6 +30,20 @@ describe('backend-express-template routes', () => {
     });
   });
 
+  it('POST - /superheros should create a new superhero', async () => {
+    const newSuperhero = {
+      name: 'Wonder Woman',
+      secret_identity: 'Diana Prince',
+      universe: 'DC',
+    };
+    const res = await request(app).post('/superheros').send(newSuperhero);
+    expect (res.status).toBe(200);
+    expect(res.body).toEqual({
+      id: expect.any(String),
+      ...newSuperhero,
+    });
+  });
+
   afterAll(() => {
     pool.end();
   });
