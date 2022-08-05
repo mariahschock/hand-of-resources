@@ -4,6 +4,7 @@ DROP TABLE IF EXISTS instruments;
 DROP TABLE IF EXISTS animals;
 DROP TABLE IF EXISTS movies;
 DROP TABLE IF EXISTS fruits;
+DROP TABLE IF EXISTS superheros;
 
 CREATE TABLE instruments (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -31,6 +32,13 @@ CREATE TABLE fruits (
     name VARCHAR NOT NULL,
     color VARCHAR NOT NULL,
     goes_on_pizza BOOLEAN
+);
+
+CREATE TABLE superheros (
+    id BIGINt GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    name VARCHAR NOT NULL,
+    secret_identity VARCHAR NOT NULL,
+    universe VARCHAR NOT NULL
 );
 
 INSERT INTO instruments (
@@ -76,3 +84,15 @@ VALUES
   ('Tomato', 'red', 'true'),
   ('Kiwi', 'green', 'false'),
   ('Pineapple,', 'yellow', 'true');
+
+  INSERT INTO superheros (
+    name,
+    secret_identity,
+    universe
+  )
+VALUES 
+  ('Spider-Man', 'Peter Parker', 'Marvel'),
+  ('Batman', 'Bruce Wayne', 'DC'),
+  ('Superman', 'Clark Kent', 'DC'),
+  ('The Incredible Hulk', 'Bruce Banner', 'Marvel');
+
