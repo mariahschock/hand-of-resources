@@ -44,6 +44,14 @@ describe('backend-express-template routes', () => {
     });
   });
 
+  it('PUT - /animals/:id should update an existing animal', async () => {
+    const res = await request(app).put('/animals/2').send({
+      name: 'Thicc Kitty',
+    });
+    expect(res.status).toBe(200);
+    expect(res.body.name).toBe('Thicc Kitty');
+  });
+
   afterAll(() => {
     pool.end();
   });
