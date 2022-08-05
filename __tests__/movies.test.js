@@ -19,6 +19,17 @@ describe('backend-express-template routes', () => {
     }]));
   });
 
+  it('GET - /movies/:id should return a single movie', async () => {
+    const res = await request(app).get('/movies/1');
+    expect(res.status).toBe(200);
+    expect(res.body).toEqual({
+      id: '1',
+      title: 'Freaky Friday',
+      director: 'Mark Waters',
+      year: 2003,
+    });
+  });
+
   afterAll(() => {
     pool.end();
   });
