@@ -19,6 +19,17 @@ describe('backend-express-template routes', () => {
     }]));
   });
 
+  it('GET - /fruits/:id should return a single fruit', async () => {
+    const res = await request(app).get('/fruits/1');
+    expect(res.status).toBe(200);
+    expect(res.body).toEqual({
+      id: '1',
+      name: 'Orange',
+      color: 'orange',
+      goes_on_pizza: false,
+    });
+  });
+
   afterAll(() => {
     pool.end();
   });
