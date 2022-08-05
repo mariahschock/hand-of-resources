@@ -44,6 +44,14 @@ describe('backend-express-template routes', () => {
     });
   });
 
+  it('PUT - /movies/:id should update movie', async () => {
+    const res = await request(app).put('/movies/4').send({
+      title: 'School of Rock 🤟',
+    });
+    expect(res.status).toBe(200);
+    expect(res.body.title).toBe('School of Rock 🤟');
+  });
+
   afterAll(() => {
     pool.end();
   });
