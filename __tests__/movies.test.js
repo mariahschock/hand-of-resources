@@ -30,6 +30,20 @@ describe('backend-express-template routes', () => {
     });
   });
 
+  it('POST - /movies should create a new movie', async () => {
+    const newMovie = {
+      title: 'Eurovision',
+      director: 'David Dobkin',
+      year: 2020,
+    };
+    const res = await request(app).post('/movies').send(newMovie);
+    expect(res.status).toBe(200);
+    expect(res.body).toEqual({
+      id: expect.any(String),
+      ...newMovie,
+    });
+  });
+
   afterAll(() => {
     pool.end();
   });
