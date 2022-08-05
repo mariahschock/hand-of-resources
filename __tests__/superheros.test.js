@@ -19,6 +19,17 @@ describe('backend-express-template routes', () => {
     }]));
   });
 
+  it('GET - /superheros/:id should return single superhero', async () => {
+    const res = await request(app).get('/superheros/1');
+    expect(res.status).toBe(200);
+    expect(res.body).toEqual({
+      id: '1',
+      name: 'Spider-Man',
+      secret_identity: 'Peter Parker',
+      universe: 'Marvel',
+    });
+  });
+
   afterAll(() => {
     pool.end();
   });
