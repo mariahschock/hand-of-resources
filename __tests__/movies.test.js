@@ -52,6 +52,14 @@ describe('backend-express-template routes', () => {
     expect(res.body.title).toBe('School of Rock 🤟');
   });
 
+  it('DELETE - /movies/:id should delete movie', async () => {
+    const res = await request(app).delete('/movies/3');
+    expect (res.status).toBe(200);
+
+    const movieRes = await request(app).get('/movies/3');
+    expect(movieRes.status).toBe(404);
+  });
+
   afterAll(() => {
     pool.end();
   });
